@@ -3,7 +3,7 @@ from SudokuPrint import print_sudoku
 
 solved_numbers=0
 
-sudoku_grid1 = [
+sudoku_grid = [
     [None,None,3,None,None,9,None,8,None],
     [7,4,None,5,3,None,None,None,9],
     [None,None,9,None,6,None,None,None,4],
@@ -15,15 +15,15 @@ sudoku_grid1 = [
     [6,None,None,None,None,None,1,9,7],
 ]
 
-sudoku_grid=[[4,None,7,None,6,8,None,3,None],
-[9,None,None,3,None,2,None,None,None],
-[None,None,None,1,None,7,2,4,None],
-[1,None,2,6,8,None,4,9,None],
-[5,None,8,None,None,4,None,2,None],
-[None,6,None,None,None,None,None,8,None],
-[8,7,None,None,None,6,3,None,4],
-[3,None,None,8,None,1,7,6,2],
-[None,None,6,None,None,None,None,1,9]]
+# sudoku_grid2=[[4,None,7,None,6,8,None,3,None],
+# [9,None,None,3,None,2,None,None,None],
+# [None,None,None,1,None,7,2,4,None],
+# [1,None,2,6,8,None,4,9,None],
+# [5,None,8,None,None,4,None,2,None],
+# [None,6,None,None,None,None,None,8,None],
+# [8,7,None,None,None,6,3,None,4],
+# [3,None,None,8,None,1,7,6,2],
+# [None,None,6,None,None,None,None,1,9]]
 
 
 #  Iterates through the grid and replaces the numbers with Single Number Objects
@@ -70,16 +70,6 @@ def ScanGrid():
                 for grid_other_number in current_grid_list:
                     number.RemovePossibleNumber(grid_other_number.Number)
 
-
-print_sudoku(sudoku_grid)
-ScanGrid()
-ScanGrid()
-ScanGrid()
-ScanGrid()
-ScanGrid()
-
-
-
 def TakeGridInput():
     print ("Enter your Grid as one long number with '-' for unknown numbers:")
     grid_string = input('Sudoku:')
@@ -91,6 +81,15 @@ def TakeGridInput():
         formatted_grid_list = [grid_string[i:i+9] for i in range(0, len(grid_string), 9)]
         return formatted_grid_list
 
+def solve_puzzle():
+    ScansNeeded=0
+    while solved_numbers != 81:
+        ScansNeeded+=1
+        ScanGrid()
+    print (f'Finished! in {ScansNeeded} passes of the puzzle')
+    print_sudoku(sudoku_grid)
+    
 
 
 
+solve_puzzle()
