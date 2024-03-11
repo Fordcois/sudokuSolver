@@ -15,16 +15,15 @@ sudoku_grid = [
     [6,None,None,None,None,None,1,9,7],
 ]
 
-# sudoku_grid2=[[4,None,7,None,6,8,None,3,None],
-# [9,None,None,3,None,2,None,None,None],
-# [None,None,None,1,None,7,2,4,None],
-# [1,None,2,6,8,None,4,9,None],
-# [5,None,8,None,None,4,None,2,None],
-# [None,6,None,None,None,None,None,8,None],
-# [8,7,None,None,None,6,3,None,4],
-# [3,None,None,8,None,1,7,6,2],
-# [None,None,6,None,None,None,None,1,9]]
-
+sudoku_grid2=[[4,None,7,None,6,8,None,3,None],
+[9,None,None,3,None,2,None,None,None],
+[None,None,None,1,None,7,2,4,None],
+[1,None,2,6,8,None,4,9,None],
+[5,None,8,None,None,4,None,2,None],
+[None,6,None,None,None,None,None,8,None],
+[8,7,None,None,None,6,3,None,4],
+[3,None,None,8,None,1,7,6,2],
+[None,None,6,None,None,None,None,1,9]]
 
 #  Iterates through the grid and replaces the numbers with Single Number Objects
 for i, row in enumerate(sudoku_grid):
@@ -44,8 +43,7 @@ GridX2Y0 = [x for x in sum(sudoku_grid, []) if x.GridLocation == 'X2Y0']
 GridX2Y1 = [x for x in sum(sudoku_grid, []) if x.GridLocation == 'X2Y1']
 GridX2Y2 = [x for x in sum(sudoku_grid, []) if x.GridLocation == 'X2Y2']
 
-
-# Now Iterate through each Object in the grid:
+# Iterate through each Object in the grid:
 def ScanGrid():
     global solved_numbers
     solved_numbers=0
@@ -70,16 +68,7 @@ def ScanGrid():
                 for grid_other_number in current_grid_list:
                     number.RemovePossibleNumber(grid_other_number.Number)
 
-def TakeGridInput():
-    print ("Enter your Grid as one long number with '-' for unknown numbers:")
-    grid_string = input('Sudoku:')
-    sudoku_grid_is_valid = len(grid_string) == 81 and all(char.isdigit() or char == '-' for char in grid_string)
-    if sudoku_grid_is_valid ==False:
-        print ('Invalid Grid - Please Try Again')
-        TakeGridInput()
-    else:
-        formatted_grid_list = [grid_string[i:i+9] for i in range(0, len(grid_string), 9)]
-        return formatted_grid_list
+
 
 def solve_puzzle():
     ScansNeeded=0
@@ -90,6 +79,16 @@ def solve_puzzle():
     print_sudoku(sudoku_grid)
     
 
-
-
 solve_puzzle()
+
+# TODO - Incorporate input into solutions
+def TakeGridInput():
+    print ("Enter your Grid as one long number with '-' for unknown numbers:")
+    grid_string = input('Sudoku:')
+    sudoku_grid_is_valid = len(grid_string) == 81 and all(char.isdigit() or char == '-' for char in grid_string)
+    if sudoku_grid_is_valid ==False:
+        print ('Invalid Grid - Please Try Again')
+        TakeGridInput()
+    else:
+        formatted_grid_list = [grid_string[i:i+9] for i in range(0, len(grid_string), 9)]
+        return formatted_grid_list
