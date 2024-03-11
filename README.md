@@ -33,7 +33,7 @@ This logical deduction approach allows the solver to efficiently solve Sudoku pu
 ## Limitations
 
 - Due to the reliance on completed cells to progress rather than inferred options, there is a limitation on the difficulty of puzzles this solver can handle.
-- Difficulty limitation can be addressed by implementing a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking) to handle more complex puzzles, working instead with a brute force approach and using the current process as a validity checker rathern than a complete solver
+- Difficulty limitation can be addressed by implementing a [backtracking algorithm](https://en.wikipedia.org/wiki/Backtracking) to handle more complex puzzles, working instead with a brute force approach and using the current process as a validity checker rather than a complete solver
 
 
 
