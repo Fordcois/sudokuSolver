@@ -1,5 +1,5 @@
 class SingleNumber:
-    def __init__(self, YLocation,XLocation,number=None,):
+    def __init__(self, YLocation,XLocation,number=None):
         self.Number = number
         if number is None:
             self.PossibleNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
